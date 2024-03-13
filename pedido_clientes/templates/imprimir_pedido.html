@@ -1,0 +1,70 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imprimir pedido</title>
+    <!-- Links font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Icons FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Link css -->
+    <link rel="stylesheet" href="{% static 'css/imprimir.css' %}">
+</head>
+
+<body>
+
+    <div class="conteiner-page">
+        <div class="content-header">
+            <div class="logoma">
+                <h2>Distribuidora 7</h2>
+                <p>98988441478</p>
+            </div>
+            <div class="data-pedido">
+                <strong>Data:</strong>
+                <p>/</p>
+                <p>/</p>
+                <p>/</p>
+            </div>
+        </div>
+        <div class="content-info-pedido">
+            <div><span class="title-info">Nome:</span> <span class="upercase">{{pedido.cliente.nome}}</span></div>
+            <div><span class="title-info">Cidade:</span> <span class="upercase">{{pedido.cliente.cidade}}</span></div>
+        </div>
+        <div class="content-table">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Referência</th>
+                        <th>Quantidade</th>
+                        <th>Valor Unitário</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in itens_pedido %}
+                    <tr>
+                        <td>{{ item.produto }}</td>
+                        <td>{{item.referencia }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td>R${{ item.valor_unitario }}</td>
+                        <td>R${{ item.subtotal|floatformat:2 }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="content-total-pedido">
+            <h2>Total: <span>R${{ pedido.total|floatformat:2 }}</span></h2>
+        </div>
+    </div>
+
+</body>
+
+</html>

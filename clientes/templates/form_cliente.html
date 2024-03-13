@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links_extras %}
+<link rel="stylesheet" href="{% static 'css/form_cliente.css' %}">
+{% endblock %}
+
+{% block container_page %}
+<div class="content-conteudo">
+    <form method="post" class="form-order">
+        {% csrf_token %}
+            <div class="field">
+                <label for="id_nome">Nome:</label>
+                {{ form.nome }}
+            </div>
+            <div class="field">
+                <label for="id_nome">Cidade:</label>
+                {{ form.cidade }}
+            </div>
+            <div class="field">
+                <label for="id_nome">Telefone:</label>
+                {{ form.telefone }}
+            </div>
+            <div class="field">
+                <label for="id_nome">Fantasia:</label>
+                {{ form.fantasia}}
+            </div>
+        <button type="submit">{{ button }}</button>
+    </form>
+</div>
+{% endblock %}

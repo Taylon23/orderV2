@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links_extras %}
+<link rel="stylesheet" href="{% static 'css/tabelas.css' %}">
+{% endblock %}
+
+{% block container_page %}
+<div class="Conteudo">
+    <div class="titulo-tabela">
+        <h1>Tabela de Pedidos</h1>
+    </div>
+    <div class="content-add">
+        <i class="fas fa-plus-circle"></i>
+        <a href="{% url 'adicionar-pedido' %}"> Adicionar Pedido</a>
+    </div>
+    <div class="content-conteudo">
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Cliente</th>
+                        <th>Data</th>
+                        <th>Ações</th> <!-- Adicionando uma coluna para as ações -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pedido in pedidos %}
+                    <tr>
+                        <td><a href="{% url 'itens-pedido' pedido.pk %}">{{ pedido.cliente }}</a></td>
+                        <td>{{ pedido.data_pedido }}</td>
+                        <td>
+                            <a href="{% url 'editar-pedido' pedido.pk %}"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'excluir-pedido' pedido.pk %}"><i class="fas fa-trash"></i></a>
+                            <a href="{% url 'imprimir-item-pedido' pedido.pk %}"><i class="fas fa-print"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

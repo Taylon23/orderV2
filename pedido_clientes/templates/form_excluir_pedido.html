@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links_extras %}
+<link rel="stylesheet" href="{% static 'css/form_cliente.css' %}">
+{% endblock %}
+
+{% block container_page %}
+<div class="content-conteudo">
+    <form method="post" class="form-order">
+        {% csrf_token %}
+        <h1 style="text-align: center;">Excluir o Pedido</h1>
+        <button style="background-color: red;" type="submit">Excluir</button>
+    </form>
+</div>
+{% endblock %}

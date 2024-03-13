@@ -1,0 +1,70 @@
+.content-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 20px;
+  height: 100%;
+}
+.form-order {
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  border-radius: 8px;
+  padding: 10px;
+  box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.2);
+  gap: 10px;
+}
+.field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.field label {
+  font-size: 1rem;
+  font-weight: 500;
+}
+.field input{
+  width: 100%;
+  height: 3em;
+  border-color: #acb6de;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+.field select {
+  width: 100%;
+  height: 3em;
+  border-color: #acb6de;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Increase the size of options */
+.field select option {
+  font-size: 16px; /* Adjust the font size as needed */
+  padding: 12px; /* Adjust the padding as needed */
+}
+
+form button {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: #007bff;
+  color: #fff;
+  padding: 0.9375em 1.5625em;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.125em;
+  width: 100%;
+  margin: 0.3em 0;
+  transition: all 0.4s ease-in-out;
+}
+
+button:hover {
+  opacity: 90%;
+}

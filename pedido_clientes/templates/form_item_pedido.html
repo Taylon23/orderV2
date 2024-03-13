@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links_extras %}
+<link rel="stylesheet" href="{% static 'css/form_cliente.css' %}">
+{% endblock %}
+
+{% block container_page %}
+<div class="content-conteudo">
+    <form method="post" class="form-order">
+        {% csrf_token %}
+            <div class="field">
+                <label for="id_nome">Pedido:</label>
+                {{ form.pedido}}
+            </div>
+            <div class="field">
+                <label for="id_nome">Produto:</label>
+                {{ form.produto}}
+            </div>
+            <div class="field">
+                <label for="id_nome">Referência:</label>
+                {{ form.referencia}}
+            </div>
+            <div class="field">
+                <label for="id_nome">Quantidade:</label>
+                {{ form.quantidade}}
+            </div>
+            <div class="field">
+                <label for="id_nome">Valor unitario:</label>
+                {{ form.valor_unitario}}
+            </div>
+        <button type="submit">{{ button }}</button>
+    </form>
+</div>
+{% endblock %}

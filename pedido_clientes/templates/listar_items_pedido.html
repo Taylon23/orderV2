@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links_extras %}
+<link rel="stylesheet" href="{% static 'css/tabelas.css' %}">
+{% endblock %}
+
+{% block container_page %}
+<div class="Conteudo">
+    <div class="titulo-tabela">
+        <h1>{{ pedido.cliente }}</h1>
+    </div>
+    <div class="content-add">
+        <i class="fas fa-plus-circle"></i>
+        <a href="{% url 'adicionar-item-pedido' %}"> Adicionar Item ao Pedido</a>
+    </div>
+    <div class="content-conteudo">
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Referência</th>
+                        <th>Quantidade</th>
+                        <th>Valor Unitário</th>
+                        <th>Subtotal</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in itens_pedido %}
+                    <tr>
+                        <td>{{ item.produto }}</td>
+                        <td>{{item.referencia }}</td>
+                        <td>{{ item.quantidade }}</td>
+                        <td>R${{ item.valor_unitario }}</td>
+                        <td>R${{ item.subtotal|floatformat:2 }}</td>
+                        <td>
+                            <a href="{% url 'editar-item-pedido' item.pk %}"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'excluir-item-pedido' item.pk %}"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="content-total-pedido">
+            <h2>Total do Pedido: R${{ pedido.total|floatformat:2 }}</h2> <!-- Adicione esta linha -->
+        </div>
+    </div>
+</div>
+{% endblock %}

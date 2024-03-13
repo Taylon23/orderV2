@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block links_extras %}
+<link rel="stylesheet" href="{% static 'css/tabelas.css' %}">
+{% endblock %}
+
+{% block container_page %}
+<div class="Conteudo">
+    <div class="titulo-tabela">
+        <h1>Tabela de Produtos</h1>
+    </div>
+    <div class="content-add">
+        <i class="fas fa-plus-circle"></i>
+        <a href="{% url 'adicionar-produto' %}"> Adicionar Produto</a>
+    </div>
+    <div class="content-conteudo">
+        <div class="table-wrapper">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Ações</th> <!-- Adicionando uma coluna para as ações -->
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for produto in produtos %}
+                    <tr>
+                        <td>{{ produto.produto }}</td>
+                        <td>
+                            <a href="{% url 'editar-produto' produto.pk %}"><i class="fas fa-edit"></i></a>
+                            <a href="{% url 'excluir-produto' produto.pk %}"><i class="fas fa-trash"></i></a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock %}

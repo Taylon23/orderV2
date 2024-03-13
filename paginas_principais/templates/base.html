@@ -1,0 +1,91 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Links font Google -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <!-- Icons FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <!-- Link css -->
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <!-- Links extras -->
+    {% block links_extras %}
+    {% endblock %}
+</head>
+
+<body>
+    {% block header %}
+    <header>
+        <nav class="NavBar">
+            {% block logo %}
+            <div class="logomarca">
+                <h1>Distribuidora 7</h1>
+                <p>(98) 988441478</p>
+            </div>
+            {% endblock %}
+            <div class="content-menu-topo">
+                <ul class="menu-topo">
+                    <li><a href="{% url 'home' %}"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="{% url 'clientes-tabela' %}"><i class="fas fa-users"></i> Clientes</a></li>
+                    <li><a href="{% url 'listar-pedidos' %}"><i class="fas fa-shopping-cart"></i> Pedidos</a></li>
+                    <li><a href="{% url 'listar-produtos' %}"><i class="fas fa-box"></i> Produtos</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+    {% endblock %}
+
+    <div class="conteiner_main">
+        {% block container_page %}
+
+        {% endblock %}
+    </div>
+
+    {% block footer %}
+    <footer class="rodape">
+        <ul class="contact_social">
+            <li class="items_social"><i class="fab fa-facebook"></i></li>
+            <li class="items_social"><i class="fab fa-instagram"></i></li>
+            <li class="items_social"><i class="fab fa-discord"></i></li>
+            <li class="items_social"><i class="fab fa-twitter "></i></li>
+            <li class="items_social"><i class="fab fa-linkedin"></i></li>
+        </ul>
+        <p>&copy; Todos os direitos reservados para Order 2023</p>
+        <p>
+            <a href="#" class="link_footer">Bases jurídicas </a>|
+            <a href="#" class="link_footer">Política de privacidade </a>|
+            <a href="#" class="link_footer">Termos de uso do website </a>|
+            <a href="#" class="link_footer">Mapa do site</a>
+        </p>
+    </footer>
+    {% endblock %}
+
+    {% block menu_mobile %}
+    <footer class="NavBarMobile">
+        <ul class="menu-mobile">
+            <li><a href="{% url 'home' %}"><i class="fas fa-home"></i>
+                    <p>Home</p>
+                </a></li>
+            <li><a href="{% url 'clientes-tabela' %}"><i class="fas fa-users"></i>
+                    <p>Clientes</p>
+                </a></li>
+            <li><a href="{% url 'listar-pedidos' %}"><i class="fas fa-shopping-cart"></i>
+                    <p>Pedidos</p>
+                </a></li>
+            <li><a href="{% url 'listar-produtos' %}"><i class="fas fa-box"></i>
+                    <p>Produtos</p>
+                </a></li>
+        </ul>
+    </footer>
+    {% endblock %}
+</body>
+
+</html>
