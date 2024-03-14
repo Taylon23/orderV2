@@ -37,7 +37,7 @@ class ItemPedidoModel(models.Model):
     produto = models.ForeignKey(
         ProdutosModel, related_name='itens_produto', on_delete=models.CASCADE)
     referencia = models.CharField(max_length=10, choices=choices.REFERENCIA_CHOICES)
-    quantidade = models.DecimalField(max_digits=10, decimal_places=2)
+    quantidade = models.IntegerField()
     valor_unitario = models.DecimalField(max_digits=10, decimal_places=2)
 
     def subtotal(self):

@@ -19,6 +19,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Produto</th>
                         <th>Referência</th>
                         <th>Quantidade</th>
@@ -30,6 +31,7 @@
                 <tbody>
                     {% for item in itens_pedido %}
                     <tr>
+                        <td>{{ forloop.counter }}</td>
                         <td>{{ item.produto }}</td>
                         <td>{{item.referencia }}</td>
                         <td>{{ item.quantidade }}</td>

@@ -19,6 +19,7 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Nome</th>
                         <th>Cidade</th>
                         <th>Telefone</th>
@@ -29,6 +30,7 @@
                 <tbody>
                     {% for cliente in clientes %}
                     <tr>
+                        <td>{{ forloop.counter }}</td>
                         <td>{{ cliente.nome }}</td>
                         <td>{{ cliente.cidade }}</td>
                         <td>{{ cliente.telefone }}</td>

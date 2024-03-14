@@ -12,6 +12,9 @@ class ListarPedidos(ListView):
     model = PedidosModel
     template_name = 'listar_pedidos.html'
     context_object_name = 'pedidos'
+    
+    def get_queryset(self):
+        return PedidosModel.objects.all().order_by('cliente')
 
 
 # Adicionar pedido

@@ -19,13 +19,16 @@
             <table class="table">
                 <thead>
                     <tr>
+                        <th>ID</th>
                         <th>Produto</th>
                         <th>Ações</th> <!-- Adicionando uma coluna para as ações -->
+                        
                     </tr>
                 </thead>
                 <tbody>
                     {% for produto in produtos %}
                     <tr>
+                        <td>{{ forloop.counter }}</td>
                         <td>{{ produto.produto }}</td>
                         <td>
                             <a href="{% url 'editar-produto' produto.pk %}"><i class="fas fa-edit"></i></a>
