@@ -1,6 +1,6 @@
 REFERENCIA_CHOICES = (
-    ('caixa', 'Caixa'),
-    ('quilo', 'Quilo'),
-    ('quilo', 'Unidade'),
-    ('fardo', 'Fardo'),
+    ('CX', 'Caixa'),
+    ('KG', 'Quilo'),
+    ('UN', 'Unidade'),
+    ('FD', 'Fardo'),
 )

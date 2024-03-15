@@ -25,11 +25,19 @@
                 <h2>Distribuidora 7</h2>
                 <p>98988441478</p>
             </div>
-            <div class="data-pedido">
-                <strong>Data:</strong>
-                <p>/</p>
-                <p>/</p>
-                <p>/</p>
+            <div class="content-data">
+                <div class="data-pedido">
+                    <strong>Data de emissão:</strong>
+                    <p>/</p>
+                    <p>/</p>
+                    <p>/</p>
+                </div>
+                <div class="data-pedido">
+                    <strong>Data de vencimento:</strong>
+                    <p>/</p>
+                    <p>/</p>
+                    <p>/</p>
+                </div>
             </div>
         </div>
         <div class="content-info-pedido">
@@ -42,8 +50,8 @@
                     <tr>
                         <th>ID</th>
                         <th>Produto</th>
-                        <th>Referência</th>
                         <th>Quantidade</th>
+                        <th>Referência</th>
                         <th>Valor Unitário</th>
                         <th>Subtotal</th>
                     </tr>
@@ -53,8 +61,8 @@
                     <tr>
                         <td>{{ forloop.counter }}</td>
                         <td>{{ item.produto }}</td>
-                        <td>{{item.referencia }}</td>
                         <td>{{ item.quantidade }}</td>
+                        <td>{{ item.referencia }}</td>
                         <td>R${{ item.valor_unitario }}</td>
                         <td>R${{ item.subtotal|floatformat:2 }}</td>
                     </tr>
@@ -63,6 +71,7 @@
             </table>
         </div>
         <div class="content-total-pedido">
+            <div class="assinatura"><p>Assinatura do Sacado:</p><div class="linha-ass"></div></div>
             <h2>Total: <span>R${{ pedido.total|floatformat:2 }}</span></h2>
         </div>
     </div>
