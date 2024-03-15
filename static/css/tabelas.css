@@ -98,4 +98,19 @@
   .content-total-pedido {
     justify-content: center;
   }
+  .table-wrapper{
+    max-height: 22em;
+  }
+  .table{
+    margin: 0;
+  }
+  .titulo-tabela{
+    padding: 2px;
+  }
+  .content-add{
+    padding: 5px;
+  }
+  h1{
+    font-size: 22px;
+  }
 }

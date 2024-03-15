@@ -4,17 +4,18 @@ from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .models import PedidosModel, ProdutosModel, ItemPedidoModel
 from .forms import PedidoForm, ProdutoForm
+from django.db.models.functions import Lower
+
 
 # Listagem de pedidos
-
 
 class ListarPedidos(ListView):
     model = PedidosModel
     template_name = 'listar_pedidos.html'
     context_object_name = 'pedidos'
-    
+
     def get_queryset(self):
-        return PedidosModel.objects.all().order_by('cliente')
+        return PedidosModel.objects.all().order_by('-data_pedido')
 
 
 # Adicionar pedido
@@ -25,6 +26,13 @@ class AdicionarPedido(CreateView):
     form_class = PedidoForm
     template_name = 'form_pedido.html'
     success_url = reverse_lazy('listar-pedidos')
+    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['cliente'].queryset = form.fields['cliente'].queryset.order_by(
+            'nome')
+        
+        return form
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -39,6 +47,13 @@ class EditarPedido(UpdateView):
     form_class = PedidoForm
     template_name = 'form_pedido.html'
     success_url = reverse_lazy('listar-pedidos')
+    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        form.fields['cliente'].queryset = form.fields['cliente'].queryset.order_by(
+            'nome')
+        
+        return form
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -133,8 +148,12 @@ class ItemPedidoCreateView(CreateView):
 
     def get_form(self, form_class=None):
         form = super().get_form(form_class)
+        # Ordena os produtos pelo nome do produto
         form.fields['produto'].queryset = form.fields['produto'].queryset.order_by(
             'produto')
+        # Ordena os pedidos pelo nome do cliente
+        form.fields['pedido'].queryset = form.fields['pedido'].queryset.order_by(
+            'cliente__nome')
         return form
 
     def get_context_data(self, **kwargs):
@@ -148,6 +167,16 @@ class ItemPedidoUpdateView(UpdateView):
     fields = '__all__'
     template_name = 'form_item_pedido.html'
     success_url = reverse_lazy('')
+    
+    def get_form(self, form_class=None):
+        form = super().get_form(form_class)
+        # Ordena os produtos pelo nome do produto
+        form.fields['produto'].queryset = form.fields['produto'].queryset.order_by(
+            'produto')
+        # Ordena os pedidos pelo nome do cliente
+        form.fields['pedido'].queryset = form.fields['pedido'].queryset.order_by(
+            'cliente__nome')
+        return form
 
     def get_success_url(self):
         # Obtém o ID do pedido a partir dos dados do formulário

@@ -5,13 +5,14 @@
   list-style: none;
 }
 
-html,body{
+html,
+body {
   height: 100%;
 }
 
 body {
   font-family: "Open Sans", sans-serif;
-  background-color: #F9F7F7;
+  background-color: #f9f7f7;
 }
 
 .NavBar {
@@ -121,5 +122,11 @@ body {
   }
   .content-menu-topo {
     display: none;
+  }
+  .NavBar {
+    padding: 5px;
+  }
+  .logomarca {
+    gap: 2px
   }
 }
